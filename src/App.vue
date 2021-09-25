@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @research="researchValue" />
     <Main />
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Header from "./components/Header.vue";
 import Main from "./components/Main.vue";
 
@@ -14,6 +15,19 @@ export default {
   components: {
     Header,
     Main,
+  },
+  data() {
+    return {
+      myApiKey: "77044b3f5f3cf322ff14c15889b611bc",
+      APIUrl: "https://api.themoviedb.org/3/movie/550?api_key=",
+    };
+  },
+  methods: {
+    fetchApi(query, arr) {
+      axios
+        .get(`${this.APIUrl}${this.myApiKey}&query=${query}`)
+        .then((res) => (this[arr] = res.data.results));
+    },
   },
 };
 </script>

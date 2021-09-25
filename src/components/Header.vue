@@ -1,7 +1,16 @@
 <template>
   <div class="header">
     <div class="logo">Boolflix</div>
-    <input type="text" />
+    <div class="ricerca">
+      <input
+        @keyup.enter="$emit('research', researchValue)"
+        v-model="researchValue"
+        type="text"
+      />
+      <button @keyup.enter="$emit('research', researchValue)">
+        Cerca
+      </button>
+    </div>
   </div>
 </template>
 
@@ -9,7 +18,7 @@
 export default {
   name: "Header",
   props: {
-    msg: String,
+    researchValue: String,
   },
 };
 </script>
@@ -29,6 +38,9 @@ export default {
   font-size: 20px;
   color: red;
   text-transform: uppercase;
+}
+input {
+  margin: 0px 10px;
 }
 h3 {
   margin: 40px 0 0;
