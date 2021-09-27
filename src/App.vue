@@ -27,11 +27,9 @@ export default {
   },
   methods: {
     getMovies(apiParams) {
-      axios.get(this.apiUrl) + "movie",
-        apiParams.then((response) => {
-          console.log(response);
-          this.movies = response.data.results;
-        });
+      axios.get(this.apiUrl + "movie", apiParams).then((response) => {
+        this.movies = response.data.results;
+      });
     },
     search(searchText) {
       const paramsObj = {
