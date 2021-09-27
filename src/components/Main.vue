@@ -3,13 +3,12 @@
     <h2>Films</h2>
     <ul class="cards">
       <li v-for="(card, index) in movieCards" :key="index">
-        <div
-          class="img"
-          :style="{
-            'background-image': 'url(' + imgUrl + card.poster_path + ')',
-          }"
-        >
-          Titolo: {{ card.title }}
+        <div class="img">
+          <img
+            :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
+            alt=""
+          />
+          <span class="retro">Titolo: {{ card.title }}</span>
         </div>
       </li>
     </ul>
@@ -23,6 +22,7 @@ export default {
   data() {
     return {
       imgUrl: "https://image.tmdb.org/t/p/w342",
+      hover: false,
     };
   },
 };
@@ -38,7 +38,26 @@ h2 {
   width: 230px;
   display: flex;
   background-size: cover;
+  background-color: black;
 }
+
+img {
+  height: 350px;
+  width: 230px;
+}
+
+.retro {
+  display: none;
+}
+
+.img:hover img {
+  display: none;
+}
+
+.img:hover .retro {
+  display: flex;
+}
+
 .main {
   height: 100%;
   width: 100%;
