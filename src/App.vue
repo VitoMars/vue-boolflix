@@ -53,6 +53,9 @@ export default {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import "./style/generals";
+body {
+  background-color: grey;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

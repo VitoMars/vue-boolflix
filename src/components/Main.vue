@@ -5,7 +5,6 @@
       <li v-for="(card, index) in movieCards" :key="index">
         <div
           class="img"
-          style="background-size: cover"
           :style="{
             'background-image': 'url(' + imgUrl + card.poster_path + ')',
           }"
@@ -38,12 +37,12 @@ h2 {
   height: 350px;
   width: 230px;
   display: flex;
+  background-size: cover;
 }
 .main {
   height: 100%;
-  max-width: 100%;
+  width: 100%;
   padding: 0px 50px;
-  background-color: grey;
 }
 .cards {
   display: flex;
