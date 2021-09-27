@@ -8,7 +8,12 @@
             :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
             alt=""
           />
-          <span class="retro">Titolo: {{ card.title }}</span>
+          <div class="retro">
+            <span><b>Titolo: </b> {{ card.title }}</span>
+            <span><b>Titolo originale: </b>{{ card.original_title }}</span>
+            <span><b>Voto: </b>{{ card.vote_average }}</span>
+            <span><b>Overview: </b>{{ card.overview }}</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -48,6 +53,7 @@ img {
 
 .retro {
   display: none;
+  padding: 0px 10px;
 }
 
 .img:hover img {
@@ -56,6 +62,8 @@ img {
 
 .img:hover .retro {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .main {
