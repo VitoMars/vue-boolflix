@@ -28,6 +28,7 @@ export default {
   methods: {
     getMovies(apiParams) {
       axios.get(this.apiUrl + "movie", apiParams).then((response) => {
+        console.log(this.apiUrl + "movie", apiParams);
         this.movies = response.data.results;
       });
     },
