@@ -3,11 +3,12 @@
     <div class="logo">Boolflix</div>
     <div class="ricerca">
       <input
-        @keyup.enter="$emit('research', researchValue)"
-        v-model="researchValue"
+        @keyup.enter="$emit('performSearch', inputText)"
+        v-model="inputText"
         type="text"
+        placeholder="Cerca il film"
       />
-      <button @keyup.enter="$emit('research', researchValue)">
+      <button @click="$emit('performSearch', inputText)">
         Cerca
       </button>
     </div>
@@ -17,8 +18,13 @@
 <script>
 export default {
   name: "Header",
-  props: {
-    researchValue: String,
+  // props: {
+  //   inputText: String,
+  // },
+  data() {
+    return {
+      inputText: "",
+    };
   },
 };
 </script>

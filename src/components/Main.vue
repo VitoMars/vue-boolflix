@@ -1,13 +1,18 @@
 <template>
-  <div class="main"></div>
+  <div class="main">
+    <h2>Films</h2>
+    <ul class="cards">
+      <li v-for="(card, index) in movieCards" :key="index">
+        {{ card.title }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Main",
-  props: {
-    msg: String,
-  },
+  props: ["movieCards"],
 };
 </script>
 

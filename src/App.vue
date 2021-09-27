@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <Header @research="researchValue" />
-    <Main />
+    <!-- Perform per ricevere l'informazione dell'header -->
+    <Header @performSearch="search" />
+    <!-- :movieCards per inviare l'informazione al Main -->
+    <Main :movieCards="movies" />
   </div>
 </template>
 
@@ -18,16 +20,33 @@ export default {
   },
   data() {
     return {
-      myApiKey: "77044b3f5f3cf322ff14c15889b611bc",
-      APIUrl: "https://api.themoviedb.org/3/movie/550?api_key=",
+      apiUrl: "https://api.themoviedb.org/3/search/",
+      apiKey: "77044b3f5f3cf322ff14c15889b611bc",
+      movies: [],
     };
   },
   methods: {
-    fetchApi(query, arr) {
-      axios
-        .get(`${this.APIUrl}${this.myApiKey}&query=${query}`)
-        .then((res) => (this[arr] = res.data.results));
+    getMovies(apiParams) {
+      axios.get(this.apiUrl) + "movie",
+        apiParams.then((response) => {
+          console.log(response);
+          this.movies = response.data.results;
+        });
     },
+    search(searchText) {
+      const paramsObj = {
+        params: {
+          api_key: this.apiKey,
+          query: searchText,
+        },
+      };
+      this.getMovies(paramsObj);
+    },
+    // fetchApi(query, arr) {
+    //   axios
+    //     .get(`${this.APIUrl}${this.myApiKey}&query=${query}`)
+    //     .then((res) => (this[arr] = res.data.results));
+    // },
   },
 };
 </script>
