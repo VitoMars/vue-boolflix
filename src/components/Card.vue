@@ -1,38 +1,40 @@
 <template>
-  <div class="Card">
-    <!-- Front Card -->
-    <img
-      class="poster"
-      v-if="card.poster_path != null"
-      :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
-      alt=""
-    />
-    <img class="poster" v-else src="@/assets/no-poster.jpeg" alt="" />
-    <!-- Back Card -->
-    <div class="retro">
-      <span><b>Titolo: </b> {{ card.title ? card.title : card.name }}</span>
-      <span
-        ><b>Titolo originale: </b
-        >{{
-          card.original_title ? card.original_title : card.original_name
-        }}</span
-      >
-      <span
-        ><b>Voto: </b>
-        <span v-for="n in 5" :key="n">
-          <i class="star fa-star" :class="n <= getVote() ? 'fas' : 'far'"></i
-        ></span>
-      </span>
-      <span>
-        <b>Lingua: </b>
-        <img
-          class="flag"
-          v-if="flags.includes(card.original_language)"
-          :src="require(`../assets/flags/${card.original_language}.png`)"
-          alt=""
-        />
-        <span v-else>{{ card.original_language.toUpperCase() }}</span>
-      </span>
+  <div class="Cards">
+    <div class="Card">
+      <!-- Front Card -->
+      <img
+        class="poster"
+        v-if="card.poster_path != null"
+        :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
+        alt=""
+      />
+      <img class="poster" v-else src="@/assets/no-poster.jpeg" alt="" />
+      <!-- Back Card -->
+      <div class="retro">
+        <span><b>Titolo: </b> {{ card.title ? card.title : card.name }}</span>
+        <span
+          ><b>Titolo originale: </b
+          >{{
+            card.original_title ? card.original_title : card.original_name
+          }}</span
+        >
+        <span
+          ><b>Voto: </b>
+          <span v-for="n in 5" :key="n">
+            <i class="star fa-star" :class="n <= getVote() ? 'fas' : 'far'"></i
+          ></span>
+        </span>
+        <span>
+          <b>Lingua: </b>
+          <img
+            class="flag"
+            v-if="flags.includes(card.original_language)"
+            :src="require(`../assets/flags/${card.original_language}.png`)"
+            alt=""
+          />
+          <span v-else>{{ card.original_language.toUpperCase() }}</span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -64,10 +66,15 @@ export default {
   width: 30px;
 }
 
+.Cards {
+  // padding: 0px 50px;
+}
+
 .Card {
   margin: 10px;
   height: 350px;
   width: 230px;
+  // margin: 0px 50px;
   display: flex;
   background-size: cover;
   background-color: black;

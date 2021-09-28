@@ -61,7 +61,7 @@ export default {
 @import "./style/generals";
 
 body {
-  background-color: grey;
+  background-color: #181818;
 }
 #app {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

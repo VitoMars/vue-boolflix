@@ -2,14 +2,14 @@
   <div class="main">
     <!-- Film -->
     <section>
-      <h2>Films</h2>
+      <h1>Films</h1>
       <ul class="cards">
         <Card v-for="(card, index) in movieCards" :key="index" :card="card" />
       </ul>
     </section>
     <!-- Series -->
     <section>
-      <h2>Series</h2>
+      <h1>Series</h1>
       <ul class="cards">
         <Card v-for="(card, index) in seriesCards" :key="index" :card="card" />
       </ul>
@@ -30,14 +30,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h2 {
-  margin: 30px 10px 20px 10px;
+h1 {
+  margin-top: 20px;
+  padding: 30px 10px;
+  // background-color: black;
+}
+
+section {
+  margin: 0px 50px;
+  border-bottom: 1px solid black;
 }
 
 .main {
   height: 100%;
   width: 100%;
-  padding: 0px 50px;
+  // padding: 0px 50px;
 }
 .cards {
   display: flex;

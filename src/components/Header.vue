@@ -6,7 +6,7 @@
         @keyup.enter="$emit('performSearch', inputText)"
         v-model="inputText"
         type="text"
-        placeholder="Cerca il film"
+        placeholder="Cerca il film o la serie"
       />
       <button @click="$emit('performSearch', inputText)">
         Cerca
@@ -18,9 +18,6 @@
 <script>
 export default {
   name: "Header",
-  // props: {
-  //   inputText: String,
-  // },
   data() {
     return {
       inputText: "",
@@ -45,9 +42,27 @@ export default {
   color: red;
   text-transform: uppercase;
 }
+
+input,
+button {
+  border: 1px solid #888;
+  border-radius: 3px;
+  padding: 5px 20px;
+}
+
 input {
   margin: 0px 10px;
+  outline: none;
 }
+button {
+  color: white;
+  background-color: black;
+}
+
+button:hover {
+  background-color: #2d2d2d;
+}
+
 h3 {
   margin: 40px 0 0;
 }
