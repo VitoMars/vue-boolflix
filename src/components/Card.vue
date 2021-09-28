@@ -1,16 +1,16 @@
 <template>
-  <div class="Cards">
-    <div class="Card">
+  <div class="Card">
+    <div class="Card-inner">
       <!-- Front Card -->
       <img
-        class="poster"
+        class="front"
         v-if="card.poster_path != null"
         :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
         alt=""
       />
-      <img class="poster" v-else src="@/assets/no-poster.jpeg" alt="" />
+      <img class="front" v-else src="@/assets/no-poster.jpeg" alt="" />
       <!-- Back Card -->
-      <div class="retro">
+      <div class="back">
         <span><b>Titolo: </b> {{ card.title ? card.title : card.name }}</span>
         <span
           ><b>Titolo originale: </b
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       imgUrl: "https://image.tmdb.org/t/p/w342",
-      flags: ["it", "en", "fr", "es", "de"],
+      flags: ["en", "it", "fr", "es", "de", "ru", "zh", "ja"],
     };
   },
   props: ["card"],
@@ -61,53 +61,63 @@ export default {
 <style scoped lang="scss">
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-.flag {
-  height: 20px;
-  width: 30px;
-}
-
-.Cards {
-  // padding: 0px 50px;
-}
-
 .Card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.Card-inner {
   margin: 10px;
   height: 350px;
   width: 230px;
-  // margin: 0px 50px;
   display: flex;
   background-size: cover;
   background-color: black;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.poster {
-  height: 350px;
-  width: 230px;
+.Card:hover .Card-inner {
+  transform: rotateY(180deg);
 }
 
-.retro {
+.front,
+.back {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.front {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.back {
   display: none;
   padding: 0px 10px;
+  transform: rotateY(180deg);
 }
 
-.Card:hover .poster {
+.Card-inner:hover .front {
   display: none;
 }
 
-.Card:hover .retro {
+.Card-inner:hover .back {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.star {
-  color: #fbcb15;
+.flag {
+  height: 20px;
+  width: 30px;
 }
 
-.main {
-  height: 100%;
-  width: 100%;
-  padding: 0px 50px;
+.star {
+  color: #fbcb15;
 }
 </style>
