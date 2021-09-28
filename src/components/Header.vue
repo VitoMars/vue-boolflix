@@ -41,7 +41,7 @@ export default {
   background-color: black;
 }
 .logo {
-  font-size: 20px;
+  font-size: 30px;
   color: red;
   text-transform: uppercase;
 }
