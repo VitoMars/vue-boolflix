@@ -10,8 +10,13 @@
     <img class="poster" v-else src="@/assets/no-poster.jpeg" alt="" />
     <!-- Back Card -->
     <div class="retro">
-      <span><b>Titolo: </b> {{ card.title }}</span>
-      <span><b>Titolo originale: </b>{{ card.original_title }}</span>
+      <span><b>Titolo: </b> {{ card.title ? card.title : card.name }}</span>
+      <span
+        ><b>Titolo originale: </b
+        >{{
+          card.original_title ? card.original_title : card.original_name
+        }}</span
+      >
       <span
         ><b>Voto: </b>
         <span v-for="n in 5" :key="n">
