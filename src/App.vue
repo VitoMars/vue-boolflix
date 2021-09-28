@@ -53,6 +53,7 @@ export default {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import "./style/generals";
+
 body {
   background-color: grey;
 }

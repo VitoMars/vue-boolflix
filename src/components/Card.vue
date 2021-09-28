@@ -10,9 +10,14 @@
     <div class="retro">
       <span><b>Titolo: </b> {{ card.title }}</span>
       <span><b>Titolo originale: </b>{{ card.original_title }}</span>
-      <span><b>Voto: </b>{{ card.vote_average }}</span>
+      <span
+        ><b>Voto: </b>
+        <span v-for="n in 5" :key="n">
+          <i class="star fa-star" :class="n <= getVote() ? 'fas' : 'far'"></i
+        ></span>
+      </span>
       <span>
-        Lingua:
+        <b>Lingua: </b>
         <img
           class="flag"
           v-if="flags.includes(card.original_language)"
@@ -35,11 +40,18 @@ export default {
     };
   },
   props: ["card"],
+  methods: {
+    getVote() {
+      return Math.ceil(this.card.vote_average / 2);
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 .flag {
   height: 20px;
   width: 30px;
@@ -73,6 +85,10 @@ export default {
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.star {
+  color: #fbcb15;
 }
 
 .main {
