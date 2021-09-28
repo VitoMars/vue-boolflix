@@ -10,7 +10,14 @@
         <span><b>Titolo: </b> {{ card.title }}</span>
         <span><b>Titolo originale: </b>{{ card.original_title }}</span>
         <span><b>Voto: </b>{{ card.vote_average }}</span>
-        <span><b>Overview: </b></span>
+        <div>
+          Lingua:
+          <img
+            class="flag"
+            :src="require(`../assets/flags/${card.original_language}.png`)"
+            alt=""
+          />
+        </div>
       </div>
     </div>
     <!-- <img
@@ -28,19 +35,19 @@ export default {
   name: "Card",
   data() {
     return {
-      // flags: ["it", "en", "fr", "es", "de"],
       imgUrl: "https://image.tmdb.org/t/p/w342",
+      // flags: ["it", "en", "fr", "es", "de"],
     };
   },
-  props: ["item"],
+  props: ["card"],
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .flag {
-  height: 100px;
-  width: 150px;
+  height: 30px;
+  width: 30px;
 }
 
 .img {

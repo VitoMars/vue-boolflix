@@ -3,7 +3,7 @@
     <h2>Films</h2>
     <ul class="cards">
       <!-- <li v-for="(card, index) in movieCards" :key="index"> -->
-      <Card v-for="(card, index) in movieCards" :key="index" />
+      <Card v-for="(card, index) in movieCards" :key="index" :card="card" />
       <!-- <div class="img" @mouseover="checkOverview()">
           <img
             :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
