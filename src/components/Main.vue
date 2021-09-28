@@ -1,9 +1,19 @@
 <template>
   <div class="main">
-    <h2>Films</h2>
-    <ul class="cards">
-      <Card v-for="(card, index) in movieCards" :key="index" :card="card" />
-    </ul>
+    <!-- Film -->
+    <section>
+      <h2>Films</h2>
+      <ul class="cards">
+        <Card v-for="(card, index) in movieCards" :key="index" :card="card" />
+      </ul>
+    </section>
+    <!-- Series -->
+    <section>
+      <h2>Series</h2>
+      <ul class="cards">
+        <Card v-for="(card, index) in seriesCards" :key="index" :card="card" />
+      </ul>
+    </section>
   </div>
 </template>
 
@@ -14,7 +24,7 @@ export default {
   components: {
     Card,
   },
-  props: ["movieCards"],
+  props: ["movieCards", "seriesCards"],
 };
 </script>
 

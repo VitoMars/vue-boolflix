@@ -3,7 +3,7 @@
     <!-- Perform per ricevere l'informazione dell'header -->
     <Header @performSearch="search" />
     <!-- :movieCards per inviare l'informazione al Main -->
-    <Main :movieCards="movies" />
+    <Main :movieCards="movies" :seriesCards="series" />
   </div>
 </template>
 
@@ -23,13 +23,18 @@ export default {
       apiUrl: "https://api.themoviedb.org/3/search/",
       apiKey: "77044b3f5f3cf322ff14c15889b611bc",
       movies: [],
+      series: [],
     };
   },
   methods: {
     getMovies(apiParams) {
       axios.get(this.apiUrl + "movie", apiParams).then((response) => {
-        console.log(this.apiUrl + "movie", apiParams);
         this.movies = response.data.results;
+      });
+    },
+    getSeries(apiParams) {
+      axios.get(this.apiUrl + "tv", apiParams).then((response) => {
+        this.series = response.data.results;
       });
     },
     search(searchText) {
@@ -40,6 +45,7 @@ export default {
         },
       };
       this.getMovies(paramsObj);
+      this.getSeries(paramsObj);
     },
     // fetchApi(query, arr) {
     //   axios
