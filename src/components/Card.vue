@@ -3,9 +3,11 @@
     <!-- Front Card -->
     <img
       class="poster"
+      v-if="card.poster_path != null"
       :src="'https://image.tmdb.org/t/p/w342' + card.poster_path"
       alt=""
     />
+    <img class="poster" v-else src="@/assets/no-poster.jpeg" alt="" />
     <!-- Back Card -->
     <div class="retro">
       <span><b>Titolo: </b> {{ card.title }}</span>
